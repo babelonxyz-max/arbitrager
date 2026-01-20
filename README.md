@@ -7,27 +7,36 @@ High-frequency arbitrage bot for Hyperliquid, HyperEVM, Binance, Bybit, and Sola
 - **Funding Arbitrage**: Compare funding rates across Hyperliquid, Binance, and Bybit
 - **HyperEVM Spot Arbitrage**: Spot vs perpetual price discrepancies
 - **Solana Jupiter Arbitrage**: Route-based arbitrage on Solana DEXs
+- **Real-time Dashboard**: Monitor bot status, opportunities, and positions
+
+## Quick Start
+
+### Local Development
+
+```bash
+# Start bot
+./start-bot.sh
+
+# Start dashboard (in another terminal)
+cd dashboard
+npm install
+npm run dev
+```
+
+## Deployment
+
+See `DEPLOY_NOW.md` for deployment instructions.
 
 ## Architecture
 
-Built with Rust using Tokio async runtime. Implements "Ralph loops" - tight, non-blocking execution loops for high-frequency trading.
-
-## Setup
-
-1. Copy `config/example.toml` to `config/local.toml` (gitignored)
-2. Fill in API keys and RPC endpoints
-3. Run: `cargo run --bin arb-daemon`
+- **Bot Server**: Rust + Tokio + Axum (port 8080)
+- **Dashboard**: Next.js + React (Vercel)
+- **Strategies**: Funding arb, HyperEVM spot, Solana Jupiter
 
 ## Configuration
 
-See `config/example.toml` for all configuration options.
+Copy `config/example.toml` to `config/local.toml` and fill in API keys.
 
-**Security**: Never commit private keys. Use environment variables or `config/local.toml` (gitignored).
+## License
 
-## Strategies
-
-- `funding_arb`: Cross-exchange funding rate arbitrage
-- `hyperevm_spot`: HyperEVM spot vs perp arbitrage
-- `solana_jupiter`: Solana DEX route arbitrage
-
-Enable/disable strategies in config file.
+MIT
