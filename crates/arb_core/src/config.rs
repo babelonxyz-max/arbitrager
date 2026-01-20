@@ -86,12 +86,21 @@ pub struct StrategiesConfig {
     pub solana_jupiter: SolanaJupiterConfig,
 }
 
-#[derive(Debug, Clone, Default, Serialize, Deserialize)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct FundingArbConfig {
     #[serde(default = "default_min_annualized_spread")]
     pub min_annualized_spread: f64,
     #[serde(default = "default_check_interval_ms")]
     pub check_interval_ms: u64,
+}
+
+impl Default for FundingArbConfig {
+    fn default() -> Self {
+        Self {
+            min_annualized_spread: default_min_annualized_spread(),
+            check_interval_ms: default_check_interval_ms(),
+        }
+    }
 }
 
 fn default_min_annualized_spread() -> f64 {
@@ -102,7 +111,7 @@ fn default_check_interval_ms() -> u64 {
     10000
 }
 
-#[derive(Debug, Clone, Default, Serialize, Deserialize)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct HyperEvmSpotConfig {
     #[serde(default = "default_min_spread_bps")]
     pub min_spread_bps: u64,
@@ -110,11 +119,20 @@ pub struct HyperEvmSpotConfig {
     pub check_interval_ms: u64,
 }
 
+impl Default for HyperEvmSpotConfig {
+    fn default() -> Self {
+        Self {
+            min_spread_bps: default_min_spread_bps(),
+            check_interval_ms: default_check_interval_ms(),
+        }
+    }
+}
+
 fn default_min_spread_bps() -> u64 {
     10
 }
 
-#[derive(Debug, Clone, Default, Serialize, Deserialize)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct SolanaJupiterConfig {
     #[serde(default = "default_min_profit_bps")]
     pub min_profit_bps: u64,
@@ -122,6 +140,16 @@ pub struct SolanaJupiterConfig {
     pub check_interval_ms: u64,
     #[serde(default = "default_max_slippage_bps")]
     pub max_slippage_bps: u64,
+}
+
+impl Default for SolanaJupiterConfig {
+    fn default() -> Self {
+        Self {
+            min_profit_bps: default_min_profit_bps(),
+            check_interval_ms: default_check_interval_ms(),
+            max_slippage_bps: default_max_slippage_bps(),
+        }
+    }
 }
 
 fn default_min_profit_bps() -> u64 {
