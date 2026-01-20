@@ -1,5 +1,5 @@
 # Multi-stage build for Rust bot
-FROM rust:1.82 as builder
+FROM rust:latest as builder
 
 WORKDIR /app
 
