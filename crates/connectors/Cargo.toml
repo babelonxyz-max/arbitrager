@@ -15,7 +15,7 @@ async-trait = { workspace = true }
 rust_decimal = { workspace = true }
 chrono = { workspace = true }
 ethers = { workspace = true }
-ethers-providers = { version = "2.0.14", default-features = false, features = ["rustls"] }
+zeroize = { workspace = true }
 solana-client = { workspace = true }
 solana-sdk = { workspace = true }
 solana-transaction-status = { workspace = true }
