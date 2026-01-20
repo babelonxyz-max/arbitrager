@@ -1,5 +1,5 @@
 use crate::config::RiskConfig;
-use crate::types::{Position, PositionSide, Trade, Venue};
+use crate::types::{Trade, Venue};
 use parking_lot::RwLock;
 use rust_decimal::Decimal;
 use std::collections::HashMap;
@@ -39,7 +39,7 @@ impl RiskEngine {
         }
 
         // Check position count per venue
-        let mut counts = self.position_counts.write();
+        let counts = self.position_counts.write();
         let count = counts.get(&trade.venue).copied().unwrap_or(0);
         if count >= self.config.max_open_positions_per_venue {
             return Err(RiskError::MaxPositionsExceeded);
@@ -47,7 +47,7 @@ impl RiskEngine {
 
         // Check notional exposure per asset
         let notional = trade.size * trade.price;
-        let mut exposure = self.notional_exposure.write();
+        let exposure = self.notional_exposure.write();
         let current_exposure = exposure.get(&trade.symbol).copied().unwrap_or(Decimal::ZERO);
         let max_notional = Decimal::from_f64_retain(self.config.max_notional_per_asset).unwrap();
         

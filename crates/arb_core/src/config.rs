@@ -86,7 +86,7 @@ pub struct StrategiesConfig {
     pub solana_jupiter: SolanaJupiterConfig,
 }
 
-#[derive(Debug, Clone, Serialize, Deserialize)]
+#[derive(Debug, Clone, Default, Serialize, Deserialize)]
 pub struct FundingArbConfig {
     #[serde(default = "default_min_annualized_spread")]
     pub min_annualized_spread: f64,
@@ -102,7 +102,7 @@ fn default_check_interval_ms() -> u64 {
     10000
 }
 
-#[derive(Debug, Clone, Serialize, Deserialize)]
+#[derive(Debug, Clone, Default, Serialize, Deserialize)]
 pub struct HyperEvmSpotConfig {
     #[serde(default = "default_min_spread_bps")]
     pub min_spread_bps: u64,
@@ -114,7 +114,7 @@ fn default_min_spread_bps() -> u64 {
     10
 }
 
-#[derive(Debug, Clone, Serialize, Deserialize)]
+#[derive(Debug, Clone, Default, Serialize, Deserialize)]
 pub struct SolanaJupiterConfig {
     #[serde(default = "default_min_profit_bps")]
     pub min_profit_bps: u64,
