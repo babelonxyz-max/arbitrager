@@ -1,0 +1,11 @@
+target/
+.git/
+.gitignore
+dashboard/
+*.md
+.vercel/
+.vscode/
+.idea/
+*.log
+.DS_Store
+node_modules/

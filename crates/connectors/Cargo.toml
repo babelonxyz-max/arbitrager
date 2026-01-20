@@ -1,0 +1,21 @@
+[package]
+name = "connectors"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+arb_core = { path = "../arb_core" }
+tokio = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+anyhow = { workspace = true }
+tracing = { workspace = true }
+reqwest = { workspace = true }
+async-trait = { workspace = true }
+rust_decimal = { workspace = true }
+chrono = { workspace = true }
+ethers = { workspace = true }
+solana-client = { workspace = true }
+solana-sdk = { workspace = true }
+solana-transaction-status = { workspace = true }
+futures = { workspace = true }

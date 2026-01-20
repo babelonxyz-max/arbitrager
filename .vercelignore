@@ -1,0 +1,9 @@
+bins/
+crates/
+config/
+target/
+Cargo.toml
+Cargo.lock
+*.rs
+*.toml
+!dashboard/**/*

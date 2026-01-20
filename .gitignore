@@ -1,0 +1,14 @@
+target/
+Cargo.lock
+config/local.toml
+*.pem
+*.key
+.env
+.DS_Store
+.vercel/
+.railway/
+node_modules/
+*.log
+dashboard/node_modules/
+dashboard/.next/
+dashboard/.vercel/

@@ -1,0 +1,23 @@
+[package]
+name = "arb-daemon"
+version.workspace = true
+edition.workspace = true
+
+[[bin]]
+name = "arb-daemon"
+path = "src/main.rs"
+
+[dependencies]
+arb_core = { path = "../../crates/arb_core" }
+connectors = { path = "../../crates/connectors" }
+strategies = { path = "../../crates/strategies" }
+tokio = { workspace = true }
+anyhow = { workspace = true }
+tracing = { workspace = true }
+tracing-subscriber = { workspace = true }
+futures = { workspace = true }
+axum = "0.7"
+tower = "0.4"
+tower-http = { version = "0.5", features = ["cors"] }
+serde_json = { workspace = true }
+chrono = { workspace = true }

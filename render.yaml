@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: arbitrage-bot
+    env: docker
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    plan: starter
+    healthCheckPath: /api/status
+    envVars:
+      - key: CONFIG_PATH
+        value: config/local.toml
+      - key: RUST_LOG
+        value: info
+    # Add your API keys as environment variables in Render dashboard

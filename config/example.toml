@@ -1,0 +1,53 @@
+# Example configuration file
+# Copy to config/local.toml and fill in your credentials
+
+[general]
+dry_run = true
+log_level = "info"
+
+[risk]
+max_notional_per_asset = 10000.0
+max_open_positions_per_venue = 5
+max_leverage = 10.0
+kill_switch_daily_loss_threshold = -1000.0
+
+[hyperliquid]
+api_url = "https://api.hyperliquid.xyz"
+private_key = ""  # Set in local.toml or env
+
+[binance]
+api_key = ""  # Set in local.toml or env
+api_secret = ""  # Set in local.toml or env
+base_url = "https://fapi.binance.com"
+
+[bybit]
+api_key = ""  # Set in local.toml or env
+api_secret = ""  # Set in local.toml or env
+base_url = "https://api.bybit.com"
+
+[hyperevm]
+rpc_url = "https://api.hyperliquid.xyz/info"  # Update with actual HyperEVM RPC
+dex_router_address = ""  # DEX router contract address
+
+[solana]
+rpc_url = "https://api.mainnet-beta.solana.com"
+private_key = ""  # Set in local.toml or env
+jupiter_api_url = "https://quote-api.jup.ag/v6"
+
+[strategies]
+funding_arb_enabled = true
+hyperevm_spot_enabled = true
+solana_jupiter_enabled = true
+
+[strategies.funding_arb]
+min_annualized_spread = 0.05  # 5% minimum annualized spread
+check_interval_ms = 10000  # 10 seconds
+
+[strategies.hyperevm_spot]
+min_spread_bps = 10  # 0.1% minimum spread
+check_interval_ms = 2000  # 2 seconds
+
+[strategies.solana_jupiter]
+min_profit_bps = 20  # 0.2% minimum profit after fees
+check_interval_ms = 1000  # 1 second
+max_slippage_bps = 50  # 0.5% max slippage
