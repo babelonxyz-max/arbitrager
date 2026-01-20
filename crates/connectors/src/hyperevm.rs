@@ -1,31 +1,20 @@
 use arb_core::types::{MarketData, Venue};
-use anyhow::{Context, Result};
+use anyhow::Result;
 use chrono::Utc;
-use ethers::providers::{Provider, Http};
-use ethers::types::Address;
 use rust_decimal::Decimal;
-use std::sync::Arc;
 use tracing::warn;
 
 #[derive(Clone)]
 pub struct HyperEvmConnector {
-    provider: Arc<Provider<Http>>,
     rpc_url: String,
-    dex_router_address: Option<Address>,
+    dex_router_address: Option<String>,
 }
 
 impl HyperEvmConnector {
     pub fn new(rpc_url: String, dex_router_address: Option<String>) -> Result<Self> {
-        let provider = Provider::<Http>::try_from(&rpc_url)
-            .context("Failed to create HyperEVM provider")?;
-        
-        let router_addr = dex_router_address
-            .and_then(|s| s.parse::<Address>().ok());
-
         Ok(Self {
-            provider: Arc::new(provider),
             rpc_url,
-            dex_router_address: router_addr,
+            dex_router_address,
         })
     }
 
