@@ -24,11 +24,10 @@ reqwest = { version = "0.11", features = ["json"] }
 async-trait = "0.1"
 rust_decimal = "1.33"
 chrono = { version = "0.4", features = ["serde"] }
-ethers = { version = "2.0", features = ["http", "ws", "rustls"] }
+ethers = { version = "2.0", features = ["http"] }
 solana-client = "1.18"
 solana-sdk = "1.18"
 solana-transaction-status = "1.18"
-anchor-client = "0.30"
 futures = "0.3"
 dashmap = "5.5"
 parking_lot = "0.12"

@@ -12,3 +12,4 @@ node_modules/
 dashboard/node_modules/
 dashboard/.next/
 dashboard/.vercel/
+git-credential-helper.sh
