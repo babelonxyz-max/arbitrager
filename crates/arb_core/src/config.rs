@@ -16,9 +16,19 @@ pub struct Config {
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct GeneralConfig {
+    #[serde(default)]
     pub dry_run: bool,
     #[serde(default = "default_log_level")]
     pub log_level: String,
+}
+
+impl Default for GeneralConfig {
+    fn default() -> Self {
+        Self {
+            dry_run: false,
+            log_level: default_log_level(),
+        }
+    }
 }
 
 fn default_log_level() -> String {
@@ -75,8 +85,11 @@ pub struct SolanaConfig {
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct StrategiesConfig {
+    #[serde(default)]
     pub funding_arb_enabled: bool,
+    #[serde(default)]
     pub hyperevm_spot_enabled: bool,
+    #[serde(default)]
     pub solana_jupiter_enabled: bool,
     #[serde(default)]
     pub funding_arb: FundingArbConfig,
@@ -84,6 +97,19 @@ pub struct StrategiesConfig {
     pub hyperevm_spot: HyperEvmSpotConfig,
     #[serde(default)]
     pub solana_jupiter: SolanaJupiterConfig,
+}
+
+impl Default for StrategiesConfig {
+    fn default() -> Self {
+        Self {
+            funding_arb_enabled: false,
+            hyperevm_spot_enabled: false,
+            solana_jupiter_enabled: false,
+            funding_arb: FundingArbConfig::default(),
+            hyperevm_spot: HyperEvmSpotConfig::default(),
+            solana_jupiter: SolanaJupiterConfig::default(),
+        }
+    }
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
