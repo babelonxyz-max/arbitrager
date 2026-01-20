@@ -1,7 +1,8 @@
 use arb_core::types::{MarketData, Venue};
 use anyhow::{Context, Result};
 use chrono::Utc;
-use ethers::prelude::*;
+use ethers::providers::{Provider, Http};
+use ethers::types::Address;
 use rust_decimal::Decimal;
 use std::sync::Arc;
 use tracing::warn;
