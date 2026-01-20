@@ -26,6 +26,7 @@ rust_decimal = "1.33"
 chrono = { version = "0.4", features = ["serde"] }
 ethers = { version = "2.0.14", default-features = false, features = ["rustls"] }
 elliptic-curve = "0.12.3"
+zeroize = "1.3"
 solana-client = "1.18"
 solana-sdk = "1.18"
 solana-transaction-status = "1.18"
